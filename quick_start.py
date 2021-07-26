@@ -4,11 +4,12 @@ from PIL import Image
 import pdb
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pdb.set_trace()
 model, preprocess = clip.load("ViT-B/32", device=device)
 
 image = preprocess(Image.open("CLIP.png")).unsqueeze(0).to(device)
 text = clip.tokenize(["a diagram", "a dog", "a cat"]).to(device)
+pdb.set_trace()
+text = clip.tokenize("a diagram").to(device)
 
 with torch.no_grad():
     image_features = model.encode_image(image)
