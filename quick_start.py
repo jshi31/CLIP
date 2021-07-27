@@ -8,6 +8,7 @@ model, preprocess = clip.load("ViT-B/32", device=device)
 
 image = preprocess(Image.open("CLIP.png")).unsqueeze(0).to(device)
 text = clip.tokenize(["Increase a yellow tune and make it looks like a sunset", "a dog", "a cat"]).to(device)
+print(text)
 # text = clip.tokenize("a diagram").to(device)
 
 with torch.no_grad():
